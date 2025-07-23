@@ -1,3 +1,8 @@
-resource "aws_vpc" "main" {
-  cidr_block = var.vpc_cidr
+fast-api-setup\vpc.tf
+data "aws_vpc" "selected" {
+  id = var.vpc_id
+}
+
+data "aws_subnet_ids" "selected" {
+  vpc_id = data.aws_vpc.selected.id
 }
